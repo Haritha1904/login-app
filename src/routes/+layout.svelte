@@ -1,11 +1,18 @@
 <script>
-	import favicon from '$lib/assets/favicon.svg';
-
-	let { children } = $props();
+    
 </script>
 
-<svelte:head>
-	<link rel="icon" href={favicon} />
-</svelte:head>
+<header>
+  <!-- <h1> My App Layout</h1>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/login">Login</a>
+    <a href="/dashboard">Dashboard</a>
+  </nav> -->
+</header>
 
-{@render children?.()}
+<slot /> 
+
+<hr />
+
+<footer>footer <br>© 2025 Haritha’s App</footer>
