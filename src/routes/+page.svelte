@@ -22,7 +22,7 @@
   
       setTimeout(() => {
         loading = false;
-        alert(`✅ Login successful for ${email}`);
+        alert(` Login successful for ${email}`);
       }, 1500);
     }
   
