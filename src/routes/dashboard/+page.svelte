@@ -19,54 +19,106 @@
 		if (status === 'OFFLINE') return '#f1f3f5';
 		return 'white';
 	}
+
+	let currentDateTime = new Date().toLocaleString();
+	setInterval(() => {
+  	currentDateTime = new Date().toLocaleString();
+	}, 1000);
+
 </script>
 
 <nav>
-	<div class="logo-wrap">
-		<img src="https://keccables.ifactory.ai/assets/images/solidRsLogo.png" alt="Company logo" class="logo" />
-		<span class="company-name">iFactory</span>
-	</div>
+	<div class="nav-left">
+		<div class="logo-wrap">
+			<img src="https://keccables.ifactory.ai/assets/images/solidRsLogo.png" alt="Company logo" class="logo" />
+			<span class="company-name">iFactory</span>
+		</div>
 
-	<div class="navtabs">
-		<div class="nav-item">Dashboard</div>
-		<div class="nav-item">Machines</div>
-		<div class="nav-item">Production</div>
-		<div class="nav-item">Tickets</div>
-		<div class="nav-item">Jobs</div>
-		<div class="nav-item">Operators</div>
-		<div class="nav-item">CBM</div>
-		<div class="nav-item">Energy</div>
+		<div class="navtabs">
+			<div class="nav-item">Dashboard</div>
+			<div class="nav-item">Machines</div>
+			<div class="nav-item">Production</div>
+			<div class="nav-item">Tickets</div>
+			<div class="nav-item dropdown-tab">
+				Jobs
+				<span class="dropdown-arrow">▼</span>
+			</div>
+			<div class="nav-item">Operators</div>
+			<div class="nav-item">CBM</div>
+			<div class="nav-item">Energy</div>
+		</div>
+	</div>
+	<div class="nav-right">
+		<img src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png" alt="Profile" class="profile-icon" />
 	</div>
 </nav>
 
-<div class="dash">
-	<h4>Factory Dashboard</h4>
+<div class="com-dash">
+
+	<div class="dash-left">
+		<div class="dash">
+			<h4>Factory Dashboard</h4>
+		</div>
+	</div>
+	
+	
+	<div class="top-controls">
+		<!-- Shift Dropdown -->
+		<div class="control shift">
+		  <!-- <label>Shift</label> -->
+		  <div class="dropdown">
+			<span>Shift </span>
+			<span class="arrow">▼</span>
+		  </div>
+		</div>
+	  
+		<!-- Date & Time -->
+		<div class="control-datetime">
+		  <!-- <label>Date & Time</label> -->
+		  <div class="datetime-display">
+			<span class="calendar-icon">📅</span>
+			<span>{currentDateTime}</span>
+		  </div>
+		</div>
+	  
+		<!-- Export -->
+		<div class="control export">
+		  <!-- <label>Export</label> -->
+		  <div class="export-button">
+			<span class="export-icon">⬇️ Export</span>
+		  </div>
+		</div>
+	</div>
 </div>
+
+  
+
 <div class="square">
     <div class="stats-cards">
         <div class="stat">
             <strong>Total Production</strong>
-            <p>379 m<br />+ 7.54 t</p>
+            <h3>379 m<br>+ <br> 7.54 t <br></h3>
+			<span style="color: red">↑99.8%</span> <span style="font-size:small">from last 2 hours, 46 mins</span>
         </div>
         <div class="stat">
             <strong>No. of Breakdowns</strong>
-            <p>16 <span style="color: green">↑ 15.8%</span></p>
+            <strong><h2>16</h2></strong> <span style="color: green">↑ 15.8%</span> <span style="font-size:small">from last 2 hours, 46 mins</span>
         </div>
         <div class="stat">
             <strong>Active Runtime</strong>
-            <p style="color: red">24%</p>
+            <span style="color: black"><h2>24%</h2></span><span style="color: red">↑ 60.1%</span> <span style="font-size:small"> from last 2 hours, 46 mins</span>
         </div>
         <div class="stat">
             <strong>Jobs Completed</strong>
-            <p style="color: red">1</p>
+            <span style="color: black"><br><h2>1</h2></span><span style="color: red">↑ 66.1%</span> <span style="font-size:small"> from last 2 hours, 46 mins</span>
         </div>
     </div>
     <div class="grid-container">
         {#each topMachines as machine} 
-            <div class="machine-card" style="background-color: {getStatusColor(machine.status)}">
+            <div class="machine-card" >
                 <div class="title"><strong>{machine.name}</strong></div>
-                <div class="status-tag">{machine.status}</div>
-                <div class="production-info"><p>Total Production</p><h2>{machine.production}</h2></div>
+                <div class="status-tag {machine.status.toLowerCase()}" >{machine.status}</div>
+                <div class="production-info"><p>Total Production</p><h1>{machine.production}</h1></div>
                 <div class="oee"><p>OEE</p><h3>{machine.oee}</h3></div>
             </div>
         {/each}
@@ -77,10 +129,10 @@
         <h4 style="margin-left: 1rem;">Other Machines</h4>
         <div class="grid-container">
             {#each bottomMachines as machine} 
-                <div class="machine-card" style="background-color: {getStatusColor(machine.status)}">
+                <div class="machine-card" >
                     <div class="title"><strong>{machine.name}</strong></div>
-                    <div class="status-tag">{machine.status}</div>
-                    <div class="production-info"><p>Total Production</p><h2>{machine.production}</h2></div>
+                    <div class="status-tag {machine.status.toLowerCase()}">{machine.status}</div>
+                    <div class="production-info"><p>Total Production</p><h1>{machine.production}</h1></div>
                     <div class="oee"><p>OEE</p><h3>{machine.oee}</h3></div>
                 </div>
             {/each}
@@ -95,24 +147,50 @@
 <a href="/login">Logout</a>
 
 <style>
+	
 	nav {
+	background-color: white;
+	border-bottom: 1px solid #ddd;
+	padding: 0;
+	}
+
+	.nav-left {
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+	margin-left: -1rem;
+	margin-top: -1rem;
+	}
+
+	.nav-right{
 		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		background-color: white;
-		border-bottom: 1px solid #ddd;
-		padding: 0.5rem 1rem;
+		padding-bottom: -5rem;
+		justify-content:flex-end;
+		align-items:center;
+	}
+
+	.profile-icon{
+		width:25px;
+		height:25px;
+		border-radius: 20%;
+		cursor: pointer;
+		margin-top: -5rem;
+		margin-bottom: -2rem;
+		
 	}
 
 	.logo {
 		width: 50px;
 		height: 50px;
+		padding: 0;
+		margin: 0;
 	}
 
 	.logo-wrap {
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
+		padding-left: 0rem;
 	}
 
 	.company-name {
@@ -132,31 +210,105 @@
 		cursor: pointer;
 		font-family: sans-serif;
 	}
+	.dropdown-tab {
+	/* display: flex; */
+	/* align-items: center; */
+	/* gap: 4px; */
+	/* position: relative; */
+	cursor: pointer;
+    }
+
+	.dropdown-arrow {
+	font-size: 0.7rem;
+	margin-top: 2px;
+	color: #555;
+	}
+
 
 	.dash {
-		margin: 1.5rem 1rem 0;
+		margin: 0rem ;
+		margin-top: -1rem;
+		margin-bottom: -1rem;
 		font-size: 1.5rem;
 		font-weight: bold;
 		color: black;
 		font-family: sans-serif;
 	}
 
+	.dash-left{
+		display: flex;
+		align-items: center;
+		gap: 2rem;
+		margin-left: 0rem;
+		margin-top: 0rem;
+	}
+
+	.com-dash{
+		justify-content: space-between;
+		display:flex;
+		align-items: center;
+		gap: 30%;
+	}
+
+	.top-controls {
+	max-width: 50%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background-color: #ffffff;
+	padding: 10px 20px;
+	gap: 5px;
+	border-bottom: 1px solid #fff0f0;
+    }
+
+	.control {
+		display: flex;
+		flex-direction: column;
+		font-size: 0.9rem;
+		color: #333;
+	}
+
+	.control label {
+		font-weight: 600;
+		margin-bottom: px;
+	}
+
+	.dropdown, .datetime-display, .export-button {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+		background: white;
+		padding: 5px 10px;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		cursor: pointer;
+	}
+	.control-datetime{
+		justify-content: space-between;
+		gap:6px;
+	}
+
+	.arrow, .calendar-icon, .export-icon {
+		font-size: 0.8rem;
+		color: #555;
+	}
+		
 	.stats-cards {
 		display: flex;
 		gap: 1rem;
 		margin: 1rem;
-		
-		padding: 1rem;
+		padding: 0rem;
 		flex-wrap: wrap;
+		font-family: sans-serif;
 	}
 
 	.stat {
 		flex: 1;
-		border: 1px solid #eee;
+		border: 1px solid #faf3f3;
 		padding: 1rem;
-		border-radius: 8px;
-		min-width: 200px;
-		height: 5rem;
+		border-radius: 10px;
+		min-width: 250px;
+		height: 8rem;
 	}
 
 	.grid-container {
@@ -171,6 +323,7 @@
 		border-radius: 10px;
 		padding: 1rem;
 		transition: transform 0.3s;
+		font-family: sans-serif;
 	}
 
 	.machine-card:hover {
@@ -180,8 +333,23 @@
 	.status-tag {
 		margin-top: 0.5rem;
 		font-weight: bold;
-		color: #ff4d4f;
 	}
+
+	.status-tag.active {
+	color: #28a745; 
+	}
+	.status-tag.active.oee{
+	color: #28a745; 
+	}
+
+	.status-tag.breakdown {
+		color: #dc3545; 
+	}
+
+	.status-tag.offline {
+		color: #6c757d; 
+	}
+
 
 	.production-info,
 	.oee {
