@@ -25,6 +25,53 @@
   	currentDateTime = new Date().toLocaleString();
 	}, 1000);
 
+	let productionByMachines =
+	[
+		{
+			name: 'RBD Machine1 - Take up 1',
+			breakdowns: 5,
+			jobsCompleted: 0,
+			activeRuntime: '50.6%',
+			production: '1.52 t'
+		},
+		{
+			name: 'RST Machine - 1',
+			breakdowns: 3,
+			jobsCompleted: 0,
+			activeRuntime: '12.7%',
+			production: '377 m'
+		},
+		{
+			name: 'RST Machine - 2',
+			breakdowns: 1,
+			jobsCompleted: 0,
+			activeRuntime: '1.2%',
+			production: '2 m'
+		},
+		{
+			name: 'RBD Machine2 - Take up 1',
+			breakdowns: 3,
+			jobsCompleted: 0,
+			activeRuntime: '23.5%',
+			production: '0.46 t'
+		}
+
+	];
+
+
+  // Chart appearance & behavior
+  let chartOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top'
+      },
+      title: {
+        display: true,
+        text: 'Production Overview'
+      }
+    }
+  };
 </script>
 
 <nav>
@@ -138,12 +185,32 @@
             {/each}
         </div>
     {/if}
-    
-    </div>
+
+	<div class="prod-right">
+		<div class="production-by-machines">
+			<h4>Production By Machines</h4>
+			{#each productionByMachines as machine}
+			<div class="machine-entry">
+				<div class="machine-info">
+					<strong>{machine.name}</strong>
+					<div class="details">
+						Breakdowns: <span style="color: red">{machine.breakdowns}</span>, Jobs Completed : {machine.breakdowns},Active Runtime: <span style="color: red">{machine.activeRuntime}</span>
+					</div>
+				</div>
+				<div class="machine-production">
+					{machine.production}
+				</div>
+			</div>
+			{/each}
+		</div>
+	</div>
+
+
+</div>
     
 
 
-<p>This page is shown only after a protected login</p>
+
 <a href="/login">Logout</a>
 
 <style>
@@ -356,11 +423,69 @@
 		margin-top: 1rem;
 	}
 
-	.production-info h2,
+	.production-info,h2,
 	.oee h3 {
 		color: black;
 	}
     .square{
         border: 2px solid rgb(240, 110, 63);
     }
+
+	.production-by-machines {
+		border: 1px solid #eee;
+		padding: 1rem;
+		border-radius: 10px;
+		max-height: 300px;
+		overflow-y: auto;
+		font-family: sans-serif;
+		background: white;
+	}
+
+	.production-by-machines h4 {
+		margin-top: 0;
+		margin-bottom: 1rem;
+		font-weight: bold;
+	}
+
+	.machine-entry {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0.5rem 0;
+		border-bottom: 1px solid #ddd;
+	}
+
+	.machine-entry:last-child {
+		border-bottom: none;
+	}
+
+	.machine-info {
+		flex: 1;
+	}
+
+	.details {
+		font-size: 0.85rem;
+		color: gray;
+	}
+
+	.machine-production {
+		font-weight: bold;
+		white-space: nowrap;
+		margin-left: 1rem;
+	}
+	.prod-right{
+		justify-content: flex-end;
+		display: flex;
+		padding-bottom: -5rem;
+		align-items:center;
+	}
+	.chart-container {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+  }
 </style>
