@@ -1,5 +1,7 @@
 <script>
-	let machines = [
+	 import MachineCard from '$lib/MachineCard.svelte';
+
+		let machines = [
 		{ name: 'RBD Machine1 - Take up 1', status: 'ACTIVE', production: '1.52 t', oee: '29.65%' },
 		{ name: 'RST Machine - 1', status: 'BREAKDOWN', production: '377 m', oee: '1.73%' },
 		{ name: 'RST Machine - 2', status: 'BREAKDOWN', production: '2 m', oee: '0%' },
@@ -160,31 +162,20 @@
             <span style="color: black"><br><h2>1</h2></span><span style="color: red">↑ 66.1%</span> <span style="font-size:small"> from last 2 hours, 46 mins</span>
         </div>
     </div>
-    <div class="grid-container">
-        {#each topMachines as machine} 
-            <div class="machine-card" >
-                <div class="title"><strong>{machine.name}</strong></div>
-                <div class="status-tag {machine.status.toLowerCase()}" >{machine.status}</div>
-                <div class="production-info"><p>Total Production</p><h1>{machine.production}</h1></div>
-                <div class="oee"><p>OEE</p><h3>{machine.oee}</h3></div>
-            </div>
-        {/each}
-    </div>
     
-    
-    {#if bottomMachines.length}
-        <h4 style="margin-left: 1rem;">Other Machines</h4>
-        <div class="grid-container">
-            {#each bottomMachines as machine} 
-                <div class="machine-card" >
-                    <div class="title"><strong>{machine.name}</strong></div>
-                    <div class="status-tag {machine.status.toLowerCase()}">{machine.status}</div>
-                    <div class="production-info"><p>Total Production</p><h1>{machine.production}</h1></div>
-                    <div class="oee"><p>OEE</p><h3>{machine.oee}</h3></div>
-                </div>
-            {/each}
-        </div>
-    {/if}
+	<!-- //machine card -->
+
+	<div class="grid grid-cols-1 gap-4">
+		{#each machines as machine}
+			<MachineCard
+				name={machine.name}
+				status={machine.status}
+				production={machine.production}
+				oee={machine.oee}
+			/>
+		{/each}
+	</div>
+	
 
 	<div class="prod-right">
 		<div class="production-by-machines">
@@ -378,55 +369,9 @@
 		height: 8rem;
 	}
 
-	.grid-container {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-		gap: 1rem;
-		margin: 2rem 1rem;
-	}
+	
 
-	.machine-card {
-		border: 1px solid #ddd;
-		border-radius: 10px;
-		padding: 1rem;
-		transition: transform 0.3s;
-		font-family: sans-serif;
-	}
-
-	.machine-card:hover {
-		transform: scale(1.02);
-	}
-
-	.status-tag {
-		margin-top: 0.5rem;
-		font-weight: bold;
-	}
-
-	.status-tag.active {
-	color: #28a745; 
-	}
-	.status-tag.active.oee{
-	color: #28a745; 
-	}
-
-	.status-tag.breakdown {
-		color: #dc3545; 
-	}
-
-	.status-tag.offline {
-		color: #6c757d; 
-	}
-
-
-	.production-info,
-	.oee {
-		margin-top: 1rem;
-	}
-
-	.production-info,h2,
-	.oee h3 {
-		color: black;
-	}
+	
     .square{
         border: 2px solid rgb(240, 110, 63);
     }
@@ -487,5 +432,13 @@
     padding: 1rem;
     border-radius: 0.5rem;
     box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
-  }
+  	}
+  	.grid grid-cols-1 gap-4{
+	display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+    background: #f5f5f5;
+    min-height: 100vh;
+  	}
 </style>
