@@ -137,12 +137,12 @@
         <p class="subtitle">Enter your email below to login to your account</p>
         <form on:submit={handleLogin}>
           <div>
-            <label>Email</label>
+            <label> Email </label>
             <input type="email" placeholder="Email" bind:value={email} required />
           </div>
   
           <div class="password-wrapper">
-            <label>Password</label>
+            <label> Password </label>
             <input
               type={showPassword ? 'text' : 'password'}
               placeholder="Password"
