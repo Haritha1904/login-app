@@ -33,18 +33,22 @@
     <div class="prod-block">
       <div class="prod-label">Total Production</div>
       <div class="prod-value">{production}</div>
-    </div>
+      <br>
 
-    <div class="oee-block">
-      <div class="donut" style="--angle: {oeeAngle}deg">
-        <div class="donut-ring"></div>
-        <div class="donut-center">
-          <div class="oee-label">OEE</div>
-          <div class="oee-percent">{oeeNum}%</div>
+      <div class="oee-block">
+        <div class="donut" style="--angle: {oeeAngle}deg">
+          <div class="donut-ring"></div>
+          <div class="donut-center">
+            <div class="oee-label">OEE</div>
+          </div>
         </div>
       </div>
+      <br>
+      <div class="oee-percent"><h2>{oeeNum}%</h2></div>
     </div>
-  </div>
+    </div>
+
+   
 </article>
 
 <style>
@@ -59,7 +63,9 @@
     border: 1px solid rgba(0,0,0,0.03);
   }
 
-  .card-top { margin-bottom: 6px; }
+  .card-top {
+    margin-bottom: 6px; 
+  }
   .name {
     margin: 0;
     font-size: 1rem;
@@ -152,7 +158,8 @@
 
   .oee-label{
     font-size: 9px;
-    color: #9ca3af;
+    color: #0a0a0a;
+    font-weight: bold;
   }
 
   .oee-percent{

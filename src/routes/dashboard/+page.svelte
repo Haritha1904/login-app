@@ -20,10 +20,12 @@
   
   <nav>
 	<div class="nav-left">
-	  <div class="logo-wrap">
+	  	<div class="logo-wrap">
 		<img src="https://keccables.ifactory.ai/assets/images/solidRsLogo.png" alt="Company logo" class="logo" />
-		<span class="company-name">iFactory</span>
-	  </div>
+		</div>
+		<div class="tit">
+			<h2> ifactory</h2>	
+		</div>
 	  <div class="navtabs">
 		<div class="nav-item">Dashboard</div>
 		<div class="nav-item">Machines</div>
@@ -45,17 +47,31 @@
 	  <div class="dash"><h4>Factory Dashboard</h4></div>
 	</div>
 	<div class="top-controls">
-	  <div class="control shift"><div class="dropdown"><span>Shift </span><span class="arrow">▼</span></div></div>
-	  <div class="control-datetime"><div class="datetime-display"><span class="calendar-icon">📅</span><span>{currentDateTime}</span></div></div>
-	  <div class="control export"><div class="export-button"><span class="export-icon">⬇️ Export</span></div></div>
+	  <div class="control shift">
+		<div class="dropdown">
+			<span>Shift </span>
+			<span class="arrow">▼</span><br>
+		</div>
+	</div>
+	  <div class="control-datetime">
+		<div class="datetime-display">
+			<span class="calendar-icon">📅</span>
+			<span>{currentDateTime}</span><br><br>
+		</div>
+	</div>
+	  <div class="control export">
+		<div class="export-button">
+			<span class="export-icon">⬇️ Export</span>
+		</div>
+	</div>
 	</div>
   </div>
   
   <div class="stats-cards">
-	<div class="stat"><strong>Total Production</strong><h3>379 m<br>+ <br> 7.54 t</h3><span style="color: red">↑99.8%</span></div>
-	<div class="stat"><strong>No. of Breakdowns</strong><h2>16</h2></div>
-	<div class="stat"><strong>Active Runtime</strong><h2>24%</h2></div>
-	<div class="stat"><strong>Jobs Completed</strong><h2>1</h2></div>
+	<div class="stat"><strong>Total Production</strong><h3>379 m<br>+ <br> 7.54 t</h3><span style="color: red">↑99.8%</span>  from last 2 hours 30 mins</div>
+	<div class="stat"><strong>No. of Breakdowns</strong><h2>16</h2><span style="color: red">↑12%</span>  from last 2 hours 30 mins</div>
+	<div class="stat"><strong>Active Runtime</strong><h2>24%</h2><span style="color: red">↑34.8%</span>  from last 2 hours 30 mins</div>
+	<div class="stat"><strong>Jobs Completed</strong><h2>1</h2><span style="color: red">↑9.8%</span>  from last 2 hours 30 mins</div>
   </div>
   
   <div class="machine-grid">
@@ -75,14 +91,15 @@
 	  justify-content: space-between;
 	  align-items: center;
 	}
-	.nav-left { display: flex; align-items: center; gap: 2rem; }
-	.logo { width: 50px; height: 50px; }
-	.company-name { font-size: 1.5rem; font-weight: bold; }
-	.navtabs { display: flex; gap: 20px; }
+	.nav-left { display: flex; align-items: center; gap: 0rem; }
+	.logo { width: 50px; height: 50px; display:flex }
+	.tit{display: flex; font-family: sans-serif;}
+	.dash{font-family: sans-serif;padding-top: -5rem;	}
+	.navtabs { display: flex; gap: 23px;padding-left: 2rem; }
 	.nav-item { color: grey; cursor: pointer; }
 	.profile-icon { width: 25px; height: 25px; border-radius: 20%; }
   
-	.com-dash { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; }
+	.com-dash { display: flex; justify-content: space-between; align-items: center; margin-top: -1rem; margin-bottom: -1rem; }
 	.dash { font-size: 1.5rem; font-weight: bold; }
 	.top-controls { display: flex; gap: 1rem; }
   
