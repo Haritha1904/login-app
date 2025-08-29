@@ -16,9 +16,9 @@
 	setInterval(() => {
 	  currentDateTime = new Date().toLocaleString();
 	}, 1000);
-  </script>
-
-  <h1 class= "mt-6" >ghdhsdfzfvbdz</h1>
+  </script>  
+	
+  <h1 class= "mt-6 text-red-900" >ghdhsdfzfvbdz</h1>
   <nav>
 	<div class="nav-left">
 	  	<div class="logo-wrap">
