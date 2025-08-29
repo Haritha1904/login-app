@@ -17,7 +17,8 @@
 	  currentDateTime = new Date().toLocaleString();
 	}, 1000);
   </script>
-  
+
+  <h1 class= "mt-6" >ghdhsdfzfvbdz</h1>
   <nav>
 	<div class="nav-left">
 	  	<div class="logo-wrap">
@@ -82,7 +83,9 @@
   
   <a href="/login">Logout</a>
   
-  <style>
+  <style lang="postcss">
+	/* @import "tailwindcss"; */
+	@reference "tailwindcss";
 	nav {
 	  background-color: white;
 	  border-bottom: 1px solid #ddd;
