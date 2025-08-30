@@ -18,64 +18,147 @@
 	}, 1000);
   </script>  
 	
-  <h1 class= "mt-6 text-red-900" >ghdhsdfzfvbdz</h1>
-  <nav>
-	<div class="nav-left">
-	  	<div class="logo-wrap">
-		<img src="https://keccables.ifactory.ai/assets/images/solidRsLogo.png" alt="Company logo" class="logo" />
+	<!-- NAVBAR-->
+
+	<nav class= "bg-white border-b border-gray-200 px-4 py-2 flex justify-between items-center">
+		<div class="flex items-center gap-0">
+			<img src="https://keccables.ifactory.ai/assets/images/solidRsLogo.png" alt="Company logo" class="logo" />
+				<h2 class="text-xl font-semibold font-sans">ifactory</h2>
+				<div class="flex gap-6 pl-8 text-gray-600">
+					<div class="cursor-pointer hover:text-black">Dashboard</div>
+					<div class="cursor-pointer hover:text-black">Machines</div>
+					<div class="cursor-pointer hover:text-black">Production</div>
+					<div class="cursor-pointer hover:text-black">Tickets</div>
+					<!-- <div class="cursor-pointer hover:text-black flex items-center gap-1">
+						Jobs <span class="text-sm">▼</span>
+					</div> -->
+					<button class="flex items-center space-x-2">
+						<span>Jobs</span>
+						<svg xmlns="http://www.w3.org/2000/svg" 
+							 fill="none" 
+							 viewBox="0 0 24 24" 
+							 strokeWidth={1.5} 
+							 stroke="currentColor" 
+							 class="w-5 h-5">
+						  <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+						</svg>
+					  </button>
+					  
+					<div class="cursor-pointer hover:text-black">Operators</div>
+					<div class="cursor-pointer hover:text-black">CBM</div>
+					<div class="cursor-pointer hover:text-black">Energy</div>
+				</div>
 		</div>
-		<div class="tit">
-			<h2> ifactory</h2>	
-		</div>
-	  <div class="navtabs">
-		<div class="nav-item">Dashboard</div>
-		<div class="nav-item">Machines</div>
-		<div class="nav-item">Production</div>
-		<div class="nav-item">Tickets</div>
-		<div class="nav-item dropdown-tab">Jobs <span class="dropdown-arrow">▼</span></div>
-		<div class="nav-item">Operators</div>
-		<div class="nav-item">CBM</div>
-		<div class="nav-item">Energy</div>
-	  </div>
-	</div>
-	<div class="nav-right">
-	  <img src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png" alt="Profile" class="profile-icon" />
-	</div>
-  </nav>
+		<img src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png" alt="Profile" class="w-6 h-6 rounded-full" />
+	</nav>
   
-  <div class="com-dash">
-	<div class="dash-left">
-	  <div class="dash"><h4>Factory Dashboard</h4></div>
-	</div>
-	<div class="top-controls">
-	  <div class="control shift">
-		<div class="dropdown">
-			<span>Shift </span>
-			<span class="arrow">▼</span><br>
+	<!-- DASHBOARD HEADER -->
+	<div class="flex justify-between items-center mt-2 mb-2 px-4">
+
+		<div>
+			<h4 class="text-xl font-cold font-sans">Factory Dashboard</h4>
+		</div>
+		<div class="flex gap-4 items-center">
+			
+			<button class="flex items-center space-x-2 border px-3 py-1 rounded  border-gray-200">
+				<span>Shift</span>
+					<svg xmlns="http://www.w3.org/2000/svg" 
+						fill="none" 
+						viewBox="0 0 24 24" 
+						strokeWidth={1.5} 
+						stroke="currentColor" 
+						class="w-5 h-5">
+					<path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+					</svg>
+			</button>
+
+		<!-- <div class="flex items-center gap-1 cursor-pointer border px-3 py-1 rounded">
+			<span>Shift</span>
+			<span class="text-sm text-gray-500">▼</span>
+		</div> -->
+			<button>
+				<div class="flex items-center gap-2 border px-3 py-1 rounded  border-gray-200">
+					<span>📅</span>
+					<span>{currentDateTime}</span>
+				</div>
+			</button>
+			
+			<button >
+				<div class="flex items-center  bg-white text-black  cursor-pointer border px-3 py-1 rounded  border-gray-200">
+					<span class=" px-1 py-1">Export</span> 
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+						<path stroke-linecap="round" stroke-linejoin="round"
+						 d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 
+						 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 
+						 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+					</svg>			
+				</div>
+			</button>
+
+		
 		</div>
 	</div>
-	  <div class="control-datetime">
-		<div class="datetime-display">
-			<span class="calendar-icon">📅</span>
-			<span>{currentDateTime}</span><br><br>
-		</div>
-	</div>
-	  <div class="control export">
-		<div class="export-button">
-			<span class="export-icon">⬇️ Export</span>
-		</div>
-	</div>
-	</div>
-  </div>
   
-  <div class="stats-cards">
+	<!-- STAT CARD -->
+
+	<div class="flex flex-wrap gap-4 px-4 mt-4">
+
+		<div class="flex-1 min-w-[200px] border rounded-lg border-gray-300 p-4">
+			<h2 class=" text-sr font-semibold font-sans flex items-center gap-50 ">Total Production
+			
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+			stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-activity-icon lucide-activity stroke-gray-500">
+			<path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/>
+			</svg>
+			</h2>
+
+			<h3 class="text-3xl font-spacegrotesk font-bold text-sans">379 m<br/>+<br/>7.54 t</h3>
+			<span class="text-red-500">↑99.8%</span> <span class="text-gray-500">from last 2 hours 30 mins </span>
+		</div>
+
+		<div class="flex-1 min-w-[200px] border rounded-lg border-gray-300 p-4">
+			<div class=" flex items-center gap-50">
+			<h2 class=" text-sr font-semibold">No. of Breakdowns</h2>
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+			class="lucide lucide-split-icon lucide-split stroke-gray-500"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L3 3"/><path d="m15 9 6-6"/></svg>
+			</div>
+			<h2 class="text-3xl font-bold">16</h2>
+			<span class="text-green-500">↑12%</span> <span class="text-gray-500">from last 2 hours 30 mins </span>
+		</div>
+
+		<div class="flex-1 min-w-[200px] border rounded-lg border-gray-300 p-4">
+			<h2 class=" text-sr font-semibold flex items-center gap-50">Active Runtime
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles-icon lucide-sparkles stroke-gray-500">
+					<path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 
+					0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z "/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>
+			</h2>
+			<h2 class="text-3xl font-bold">24%</h2>
+			<span class="text-red-500">↑34.8%</span> <span class="text-gray-500">from last 2 hours 30 mins </span>
+		</div>
+
+		<div class="flex-1 min-w-[200px] border rounded-lg border-gray-300 p-4 ">
+			<div class="flex items-center gap-50">
+			<h2 class=" text-sr font-semibold font-sans flex items-center  "> Jobs Completed</h2>
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
+			stroke-linejoin="round" class="lucide lucide-check-check-icon lucide-check-check stroke-gray-500"><path d="M18 6 7 17l-5-5"/><path d="m22 10-7.5 7.5L13 16"/></svg>
+			</div>
+			<h2 class="text-3xl font-bold">1</h2>
+			<span class="text-red-500">↑9.8%</span> <span class="text-gray-500">from last 2 hours 30 mins </span>
+		</div>
+
+	</div>
+
+  <!-- <div class="stats-cards">
 	<div class="stat"><strong>Total Production</strong><h3>379 m<br>+ <br> 7.54 t</h3><span style="color: red">↑99.8%</span>  from last 2 hours 30 mins</div>
 	<div class="stat"><strong>No. of Breakdowns</strong><h2>16</h2><span style="color: red">↑12%</span>  from last 2 hours 30 mins</div>
 	<div class="stat"><strong>Active Runtime</strong><h2>24%</h2><span style="color: red">↑34.8%</span>  from last 2 hours 30 mins</div>
 	<div class="stat"><strong>Jobs Completed</strong><h2>1</h2><span style="color: red">↑9.8%</span>  from last 2 hours 30 mins</div>
-  </div>
+  </div> -->
   
-  <div class="machine-grid">
+  
+   <!-- MACHINE GRID -->
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 p-5 items-start">
+
 	{#each machines as machine}
 	  <MachineCard {...machine} />
 	{/each}
@@ -86,6 +169,9 @@
   <style lang="postcss">
 	/* @import "tailwindcss"; */
 	@reference "tailwindcss";
+
+	.logo { width: 50px; height: 50px; display:flex }
+/* 	
 	nav {
 	  background-color: white;
 	  border-bottom: 1px solid #ddd;
@@ -95,7 +181,7 @@
 	  align-items: center;
 	}
 	.nav-left { display: flex; align-items: center; gap: 0rem; }
-	.logo { width: 50px; height: 50px; display:flex }
+	
 	.tit{display: flex; font-family: sans-serif;}
 	.dash{font-family: sans-serif;padding-top: -5rem;	}
 	.navtabs { display: flex; gap: 23px;padding-left: 2rem; }
@@ -108,7 +194,7 @@
   
 	.stats-cards { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
 	.stat { flex: 1; border: 1px solid #eee; padding: 1rem; border-radius: 10px; min-width: 200px; }
-  
+   */
 	.machine-grid {
 	  display: grid;
 	  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -117,4 +203,4 @@
 	  align-items: start;
 	}
   </style>
-  
+   

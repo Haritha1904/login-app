@@ -7,165 +7,55 @@
   const oeeNum = Number(String(oee).replace('%', '')) || 0;
   const oeeAngle = Math.round(oeeNum * 3.6);
 
-  $: bg = status === 'ACTIVE' ? '#eaf9ee' 
-       : status === 'BREAKDOWN' ? '#fff6f6' 
-       : '#f4f5f6';
+  $: bg = status === 'ACTIVE' ? 'bg-green-50'
+       : status === 'BREAKDOWN' ? 'bg-red-50'
+       : 'bg-gray-100';
 
-  $: strip = status === 'ACTIVE' ? '#34d399' 
-       : status === 'BREAKDOWN' ? '#ffb1b1' 
-       : '#d1d6da';
+  $: strip = status === 'ACTIVE' ? 'bg-green-400'
+       : status === 'BREAKDOWN' ? 'bg-red-400'
+       : 'bg-gray-400';
 
-  $: pillBg = status === 'ACTIVE' ? '#10b981' 
-       : status === 'BREAKDOWN' ? '#ff6b6b' 
-       : '#8f9599';
+  $: pillBg = status === 'ACTIVE' ? 'bg-green-600'
+       : status === 'BREAKDOWN' ? 'bg-red-500'
+       : 'bg-gray-500';
 </script>
 
-<article class="card" style="background: {bg}">
-  <div class="card-top">
-    <h3 class="name">{name}</h3>
+<article class={`rounded-lg p-0 shadow-md min-h-[200px] flex flex-col justify-between border border-black/5 ${bg} w-5/5 font-spacegrotesk`}>
+  <!-- Top -->
+  <div class="mb-1">
+    <h3 class="m-0 text-sm font-bold text-gray-900 leading-tight">{name}</h3>
   </div>
 
-  <div class="status-strip" style="background: {strip}">
-    <span class="status-pill" style="background: {pillBg}">{status}</span>
+  <!-- Status Strip -->
+  <div class={`h-2 rounded-lg relative my-2 ${strip}`}>
+    <span class={`absolute -top-3 left-2 px-2 py-0.5 rounded-xl text-white font-bold text-[0.6rem] tracking-wide shadow ${pillBg}`}>
+      {status}
+    </span>
   </div>
 
-  <div class="card-body">
-    <div class="prod-block">
-      <div class="prod-label">Total Production</div>
-      <div class="prod-value">{production}</div>
-      <br>
+  <!-- Body -->
+  <div class="flex justify-between items-center gap-2">
+    <div class="flex flex-col items-start">
+      <!-- Label + Value -->
+      <div class="text-[0.75rem] text-gray-500 mb-0.5">Total Production</div>
+      <div class="text-4xl font-extrabold text-gray-900">{production}</div>
 
-      <div class="oee-block">
-        <div class="donut" style="--angle: {oeeAngle}deg">
-          <div class="donut-ring"></div>
-          <div class="donut-center">
-            <div class="oee-label">OEE</div>
+      <!-- OEE Donut -->
+      <div class="flex items-center justify-center mt-2">
+        <div class="relative w-12 h-12">
+          <div class="absolute inset-0 rounded-full"
+               style="background: conic-gradient(#ff6b6b {oeeAngle}deg, #e5e7eb 0deg)">
+          </div>
+          <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
+                      w-6 h-6 rounded-full bg-white flex flex-col items-center justify-center 
+                      text-[8px] shadow">
+            <div class="flex flex-col items-center">
+              <div class="text-[10px] font-bold text-gray-900">OEE</div>
+              <div class="text-[0.65rem] text-red-500 mt-0.5">{oeeNum}%</div>
+            </div>        
           </div>
         </div>
-      </div>
-      <br>
-      <div class="oee-percent"><h2>{oeeNum}%</h2></div>
+      </div>   
     </div>
-    </div>
-
-   
+  </div>
 </article>
-
-<style>
-  .card{
-    border-radius: 10px;
-    padding: 14px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.04);
-    min-height: 180px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border: 1px solid rgba(0,0,0,0.03);
-  }
-
-  .card-top {
-    margin-bottom: 6px; 
-  }
-  .name {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 700;
-    color: #111827;
-    line-height: 1.1;
-  }
-
-  .status-strip{
-    height: 8px;
-    border-radius: 8px;
-    position: relative;
-    margin: 10px 0 14px 0;
-  }
-
-  .status-pill{
-    position: absolute;
-    top: -12px;
-    left: 12px;
-    padding: 4px 8px;
-    border-radius: 12px;
-    color: white;
-    font-weight: 700;
-    font-size: 0.65rem;
-    letter-spacing: 0.6px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    text-transform: uppercase;
-  }
-
-  .card-body{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .prod-block{
-    display:flex;
-    flex-direction: column;
-  }
-
-  .prod-label{
-    font-size: 0.78rem;
-    color: #6b7280;
-    margin-bottom: 6px;
-  }
-
-  .prod-value{
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: #111827;
-  }
-
-  .oee-block {
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
-
-  .donut{
-    width: 64px;
-    height: 64px;
-    position: relative;
-  }
-
-  .donut-ring{
-    position:absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: conic-gradient(#ff6b6b var(--angle, 0deg), #e9e9e9 0deg);
-    display:block;
-  }
-
-  .donut-center{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: white;
-    display:flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content:center;
-    font-size: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  }
-
-  .oee-label{
-    font-size: 9px;
-    color: #0a0a0a;
-    font-weight: bold;
-  }
-
-  .oee-percent{
-    font-weight: 700;
-    color: #ff5a5a;
-    font-size: 11px;
-    line-height: 1;
-  }
-</style>
