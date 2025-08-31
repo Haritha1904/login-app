@@ -24,6 +24,8 @@
 	"dependencies": {
 		"@fontsource/space-grotesk": "^5.2.8",
 		"@heroicons/react": "^2.2.0",
-		"@tailwindcss/vite": "^4.1.12"
+		"@tailwindcss/vite": "^4.1.12",
+		"chart.js": "^4.5.0",
+		"chartjs-plugin-datalabels": "^2.2.0"
 	}
 }
