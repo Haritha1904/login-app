@@ -1,12 +1,5 @@
 <script>
 	import MachineCard from '$lib/MachineCard.svelte';
-	import { onMount } from "svelte";
-	import { Chart, registerables } from "chart.js";
-	import ChartDataLabels from "chartjs-plugin-datalabels";
-
-	Chart.register(...registerables, ChartDataLabels);
-
-	let chartCanvas;
   
 	let machines = [
 	  { name: 'RBD Machine1 - Take up 1', status: 'ACTIVE', production: '1.52 t', oee: '29.65%' },
@@ -18,95 +11,11 @@
 	  { name: 'RBD Machine2 - Take up 1', status: 'BREAKDOWN', production: '0.58 t', oee: '6.86%' },
 	  { name: 'Coiler', status: 'OFFLINE', production: '0 kg', oee: '0%' }
 	];
-	// helper: convert production strings into numbers (ignores units)
-	function parseProduction(p) {
-	  return parseFloat(p);
-	}
-
-	onMount(() => {
-	  new Chart(chartCanvas, {
-		type: "bar",
-		data: {
-		  labels: machines.map(m => m.name),
-		  datasets: [
-			{
-			  label: "Production",
-			  data: machines.map(m => parseProduction(m.production)),
-			  backgroundColor: "#f97316", // Tailwind orange
-			  borderRadius: 6
-			}
-		  ]
-		},
-		options: {
-		  responsive: true,
-		  plugins: {
-			legend: { display: false },
-			tooltip: {
-			  callbacks: {
-				label: ctx => `${ctx.raw} units`
-			  }
-			},
-			datalabels: {
-			  color: "#374151",
-			  anchor: "end",
-			  align: "end",
-			  formatter: value => value
-			}
-		  },
-		  scales: {
-			y: {
-			  beginAtZero: true,
-			  ticks: { color: "#6b7280" }
-			},
-			x: {
-			  ticks: { color: "#6b7280" }
-			}
-		  }
-		},
-		plugins: [ChartDataLabels]
-	  });
-	});
   
 	let currentDateTime = new Date().toLocaleString();
 	setInterval(() => {
 	  currentDateTime = new Date().toLocaleString();
 	}, 1000);
-
-	let machineData = [
-    {
-      name: "RBD Machine1 - Take up 1",
-      breakdowns: 16,
-      jobsCompleted: 6,
-      runtime: "48.1%",
-      runtimeColor: "text-red-500",
-      production: "4.4 t"
-    },
-    {
-      name: "RST Machine - 2",
-      breakdowns: 15,
-      jobsCompleted: 0,
-      runtime: "54.7%",
-      runtimeColor: "text-red-500",
-      production: "7721 m"
-    },
-    {
-      name: "CCR Machine",
-      breakdowns: 4,
-      jobsCompleted: 0,
-      runtime: "89.6%",
-      runtimeColor: "text-green-500",
-      production: "31,963.17 kg"
-    },
-    {
-      name: "Coiler",
-      breakdowns: 0,
-      jobsCompleted: 0,
-      runtime: "100%",
-      runtimeColor: "text-green-500",
-      production: "35,133 kg"
-    }
-  ];
-
   </script>  
 	
 	<!-- NAVBAR-->
@@ -192,10 +101,10 @@
   
 	<!-- STAT CARD -->
 
-	<div class="flex flex-wrap gap-4 px-4 mt-4">
+	<div class="flex flex-wrap gap-4 px-4 mt-4 ">
 
 		<div class="flex-1 min-w-[200px] border rounded-lg border-gray-300 p-4">
-			<h2 class=" text-sr font-semibold font-spacegrotesk flex items-center gap-50 ">Total Production
+			<h2 class=" text-sr font-semibold flex items-center gap-50 ">Total Production
 			
 			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
 			stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-activity-icon lucide-activity stroke-gray-500">
@@ -245,56 +154,15 @@
 	<div class="stat"><strong>Active Runtime</strong><h2>24%</h2><span style="color: red">↑34.8%</span>  from last 2 hours 30 mins</div>
 	<div class="stat"><strong>Jobs Completed</strong><h2>1</h2><span style="color: red">↑9.8%</span>  from last 2 hours 30 mins</div>
   </div> -->
-
-
   
   
    <!-- MACHINE GRID -->
 	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 p-5 items-start">
 
 	{#each machines as machine}
-	  <MachineCard {...machine} />	
+	  <MachineCard {...machine} />
 	{/each}
   </div>
-
-  <!-- FLEX -->
-  <div class="flex items-center gap-50 ">
-  <!-- BAR GRAPH -->
-  <div class="p-2">
-  	<div class="bg-white rounded-lg shadow p-4">
-    	<h2 class="text-lg font-semibold mb-4">Production Across Machines</h2>
-
-		<div class="w-[500px] h-[300px] p-4 bg-white shadow rounded-xl">
-  			<canvas bind:this={chartCanvas}></canvas>
-	</div>
-
-  </div>
-</div>
-
-	<div class="bg-white rounded-lg shadow p-4 h-[350px] w-[320px] overflow-y-auto">
-  		<h2 class="text-lg font-semibold mb-3">Production By Machines</h2>
-
-  			<ul class="space-y-3">
-    		{#each machineData as machine}
-      			<li class="flex justify-between items-start border-b pb-2">
-        <!-- Left Info -->
-        	<div>
-          	<p class="font-medium text-gray-800">{machine.name}</p>
-          	<p class="text-sm text-gray-500">
-            Breakdowns : {machine.breakdowns}, Jobs Completed : {machine.jobsCompleted}, Active Runtime : 
-            <span class={machine.runtimeColor}>{machine.runtime}</span>
-          	</p>
-        	</div>
-
-        <!-- Production -->
-        	<p class="font-semibold text-gray-900 whitespace-nowrap ml-2">
-          	{machine.production}
-        	</p>
-      			</li>
-    		{/each}
-  			</ul>
-	</div>
-	</div>
   
   <a href="/login">Logout</a>
   
