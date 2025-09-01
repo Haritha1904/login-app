@@ -195,7 +195,7 @@
 	<div class="flex flex-wrap gap-4 px-4 mt-4">
 
 		<div class="flex-1 min-w-[200px] border rounded-lg border-gray-300 p-4">
-			<h2 class=" text-sr font-semibold font-sans flex items-center gap-50 ">Total Production
+			<h2 class=" text-sr font-semibold font-spacegrotesk flex items-center gap-50 ">Total Production
 			
 			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
 			stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-activity-icon lucide-activity stroke-gray-500">
@@ -334,5 +334,6 @@
 	  padding: 16px;
 	  align-items: start;
 	}
+
   </style>
    
