@@ -1,6 +1,13 @@
 <script>
 	import MachineCard from '$lib/MachineCard.svelte';
-  
+	import { onMount } from "svelte";
+	import { Chart, registerables } from "chart.js";
+	import ChartDataLabels from "chartjs-plugin-datalabels";
+
+	Chart.register(...registerables, ChartDataLabels);
+
+	let chartCanvas;
+
 	let machines = [
 	  { name: 'RBD Machine1 - Take up 1', status: 'ACTIVE', production: '1.52 t', oee: '29.65%' },
 	  { name: 'RST Machine - 1', status: 'BREAKDOWN', production: '377 m', oee: '1.73%' },
@@ -11,6 +18,53 @@
 	  { name: 'RBD Machine2 - Take up 1', status: 'BREAKDOWN', production: '0.58 t', oee: '6.86%' },
 	  { name: 'Coiler', status: 'OFFLINE', production: '0 kg', oee: '0%' }
 	];
+	function parseProduction(p) {
+	  return parseFloat(p);
+	}
+
+	onMount(() => {
+	  new Chart(chartCanvas, {
+		type: "bar",
+		data: {
+		  labels: machines.map(m => m.name),
+		  datasets: [
+			{
+			  label: "Production",
+			  data: machines.map(m => parseProduction(m.production)),
+			  backgroundColor: "#f97316", // Tailwind orange
+			  borderRadius: 6
+			}
+		  ]
+		},
+		options: {
+		  responsive: true,
+		  plugins: {
+			legend: { display: false },
+			tooltip: {
+			  callbacks: {
+				label: ctx => `${ctx.raw} units`
+			  }
+			},
+			datalabels: {
+			  color: "#374151",
+			  anchor: "end",
+			  align: "end",
+			  formatter: value => value
+			}
+		  },
+		  scales: {
+			y: {
+			  beginAtZero: true,
+			  ticks: { color: "#6b7280" }
+			},
+			x: {
+			  ticks: { color: "#6b7280" }
+			}
+		  }
+		},
+		plugins: [ChartDataLabels]
+	  });
+	});
   
 	
 </script>  
@@ -82,6 +136,46 @@
 	  <MachineCard {...machine} />
 	{/each}
   </div>
+
+    <div class="flex items-center gap-50       ">
+
+  <!-- BAR GRAPH -->
+  <div class="p-2">
+  	<div class="bg-white rounded-lg shadow p-4">
+    	<h2 class="text-lg font-semibold mb-4">Production Across Machines</h2>
+
+		<div class="w-[500px] h-[300px] p-4 bg-white shadow rounded-xl">
+  			<canvas bind:this={chartCanvas}></canvas>
+	</div>
+
+  </div>
+</div>
+
+	<div class="bg-white rounded-lg shadow p-4 h-[350px] w-[320px] overflow-y-auto">
+  		<h2 class="text-lg font-semibold mb-3">Production By Machines</h2>
+
+  			<ul class="space-y-3">
+    		{#each machines as machine}
+      			<li class="flex justify-between items-start border-b pb-2">
+        <!-- Left Info -->
+        	<div>
+          	<p class="font-medium text-gray-800">{machine.name}</p>
+          	<p class="text-sm text-gray-500">
+            Breakdowns : {machine.breakdowns}, Jobs Completed : {machine.jobsCompleted}, Active Runtime : 
+            <span class={machine.runtimeColor}>{machine.runtime}</span>
+          	</p>
+        	</div>
+
+        <!-- Production -->
+        	<p class="font-semibold text-gray-900 whitespace-nowrap ml-2">
+          	{machine.production}
+        	</p>
+      			</li>
+    		{/each}
+  			</ul>
+	</div>
+	</div>
+  
   
   <a href="/login">Logout</a>
   
