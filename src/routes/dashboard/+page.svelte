@@ -12,92 +12,11 @@
 	  { name: 'Coiler', status: 'OFFLINE', production: '0 kg', oee: '0%' }
 	];
   
-	let currentDateTime = new Date().toLocaleString();
-	setInterval(() => {
-	  currentDateTime = new Date().toLocaleString();
-	}, 1000);
-  </script>  
+	
+</script>  
 	
 	<!-- NAVBAR-->
 
-	<nav class= "bg-white border-b border-gray-200 px-4 py-2 flex justify-between items-center">
-		<div class="flex items-center gap-0">
-			<img src="https://keccables.ifactory.ai/assets/images/solidRsLogo.png" alt="Company logo" class="logo" />
-				<h2 class="text-xl font-semibold font-sans">ifactory</h2>
-				<div class="flex gap-6 pl-8 text-gray-600">
-					<div class="cursor-pointer hover:text-black">Dashboard</div>
-					<div class="cursor-pointer hover:text-black">Machines</div>
-					<div class="cursor-pointer hover:text-black">Production</div>
-					<div class="cursor-pointer hover:text-black">Tickets</div>
-					<!-- <div class="cursor-pointer hover:text-black flex items-center gap-1">
-						Jobs <span class="text-sm">▼</span>
-					</div> -->
-					<button class="flex items-center space-x-2">
-						<span>Jobs</span>
-						<svg xmlns="http://www.w3.org/2000/svg" 
-							 fill="none" 
-							 viewBox="0 0 24 24" 
-							 strokeWidth={1.5} 
-							 stroke="currentColor" 
-							 class="w-5 h-5">
-						  <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-						</svg>
-					  </button>
-					  
-					<div class="cursor-pointer hover:text-black">Operators</div>
-					<div class="cursor-pointer hover:text-black">CBM</div>
-					<div class="cursor-pointer hover:text-black">Energy</div>
-				</div>
-		</div>
-		<img src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png" alt="Profile" class="w-6 h-6 rounded-full" />
-	</nav>
-  
-	<!-- DASHBOARD HEADER -->
-	<div class="flex justify-between items-center mt-2 mb-2 px-4">
-
-		<div>
-			<h4 class="text-xl font-cold font-sans">Factory Dashboard</h4>
-		</div>
-		<div class="flex gap-4 items-center">
-			
-			<button class="flex items-center space-x-2 border px-3 py-1 rounded  border-gray-200">
-				<span>Shift</span>
-					<svg xmlns="http://www.w3.org/2000/svg" 
-						fill="none" 
-						viewBox="0 0 24 24" 
-						strokeWidth={1.5} 
-						stroke="currentColor" 
-						class="w-5 h-5">
-					<path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-					</svg>
-			</button>
-
-		<!-- <div class="flex items-center gap-1 cursor-pointer border px-3 py-1 rounded">
-			<span>Shift</span>
-			<span class="text-sm text-gray-500">▼</span>
-		</div> -->
-			<button>
-				<div class="flex items-center gap-2 border px-3 py-1 rounded  border-gray-200">
-					<span>📅</span>
-					<span>{currentDateTime}</span>
-				</div>
-			</button>
-			
-			<button >
-				<div class="flex items-center  bg-white text-black  cursor-pointer border px-3 py-1 rounded  border-gray-200">
-					<span class=" px-1 py-1">Export</span> 
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-						<path stroke-linecap="round" stroke-linejoin="round"
-						 d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 
-						 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 
-						 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-					</svg>			
-				</div>
-			</button>
-
-		
-		</div>
-	</div>
   
 	<!-- STAT CARD -->
 
