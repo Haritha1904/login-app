@@ -91,6 +91,8 @@
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-200">
+
+
                 {#each machines as machine, i}
                   <tr class="hover:bg-gray-50">
                     <td class="px-4 py-2 text-sm text-black-700 font-semibold">{i + 1}</td>
@@ -108,6 +110,8 @@
                     <td class="px-4 py-2 text-sm text-gray-700 font-semibold">{machine.oee || '⏳'}</td>
                   </tr>
                 {/each}
+
+                
               </tbody>
             </table>
             </div>

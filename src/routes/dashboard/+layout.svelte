@@ -11,12 +11,13 @@
   </script>
   
   <!-- NAVBAR -->
-  <nav class="bg-white border-b border-gray-200 px-4 py-2 flex justify-between items-center">
+  <nav class="fixed top-0 left-0 w-full 
+  bg-white border-b border-gray-200 px-4 py-2 flex justify-between items-center z-50">
     <div class="flex items-center gap-0">
       <img src="https://keccables.ifactory.ai/assets/images/solidRsLogo.png" alt="Company logo" class="logo" />
-      <h2 class="text-xl font-semibold font-sans ml-2">ifactory</h2>
-  
-      <div class="flex gap-6 pl-8 text-gray-600">
+      <h2 class="text-xl md:text-2xl font-bold font-[Manrope] ml-2">iFactory</h2>
+  <!-- NAVTABS -->
+      <div class="hidden md:flex gap-6 pl-8 text-gray-600">
         <a href="/dashboard" class="hover:text-black">Dashboard</a>
         <a href="/dashboard/machines" class="hover:text-black">Machines</a>
         <a href="/dashboard/production" class="hover:text-black">Production</a>
@@ -35,14 +36,25 @@
       </div>
     </div>
   
+    <!-- USER ICON -->
     <img src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png" alt="Profile" class="w-6 h-6 rounded-full" />
+
+
+    <!-- Mobile hamburger -->
+      <button class="md:hidden">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+
+
   </nav>
   
   <!-- DASHBOARD HEADER -->
-  <div class="flex justify-between items-center mt-2 mb-2 px-4">
-    <h4 class="text-xl font-sans">Factory Dashboard</h4>
+  <div class="flex flex-col md:flex-row md:justify-between md:items-center mt-16 mb-2 px-4 gap-4">
+    <h4 class="text-xl md:text-2xl font-semibold  m-2 mt-4 font-sans">Factory Dashboard</h4>
   
-    <div class="flex gap-4 items-center">
+    <div class="flex  flex-wrap gap-2 md:gap-4 items-center">
       <button class="flex items-center gap-2 border px-3 py-1 rounded border-gray-200">
         Shift
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">

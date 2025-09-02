@@ -32,12 +32,14 @@
 			  label: "Production",
 			  data: machines.map(m => parseProduction(m.production)),
 			  backgroundColor: "#f97316", // Tailwind orange
-			  borderRadius: 6
+			  borderRadius: 0
 			}
 		  ]
 		},
 		options: {
 		  responsive: true,
+		  maintainAspectRatio: false, // allow custom height
+
 		  plugins: {
 			legend: { display: false },
 			tooltip: {
@@ -73,11 +75,12 @@
 
   
 	<!-- STAT CARD -->
+	 
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4  px-4 mt-4 font-[Manrope] ">
+		<!-- CARD 1 -->
 
-	<div class="flex flex-wrap gap-4 px-4 mt-4 ">
-
-		<div class="flex-1 min-w-[200px] border rounded-lg border-gray-300 p-4">
-			<h2 class=" text-sr font-semibold flex items-center gap-50 ">Total Production
+		<div class="border rounded-lg  border-gray-300 p-4 ">
+			<h2 class=" flex justify-between  items-center  text-sm md:text-base font-semibold ">Total Production
 			
 			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
 			stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-activity-icon lucide-activity stroke-gray-500">
@@ -85,96 +88,137 @@
 			</svg>
 			</h2>
 
-			<h3 class="text-3xl font-spacegrotesk font-bold text-sans">379 m<br/>+<br/>7.54 t</h3>
-			<span class="text-red-500">↑99.8%</span> <span class="text-gray-500">from last 2 hours 30 mins </span>
+			<h3 class="text-2xl md:text-3xl font-spacegrotesk font-bold ">379 m<br/>+<br/>7.54 t</h3>
+			<span class="text-red-500">↑99.8%</span> <span class="text-gray-500 text-xs md:text-sm">from last 2 hours 30 mins </span>
 		</div>
 
-		<div class="flex-1 min-w-[200px] border rounded-lg border-gray-300 p-4">
-			<div class=" flex items-center gap-50">
-			<h2 class=" text-sr font-semibold">No. of Breakdowns</h2>
+		<!-- CARD2 -->
+		<div class="border rounded-lg border-gray-300 p-4">
+			<div class=" flex items-center justify-between">
+			<h2 class=" text-sm md:text-base font-semibold">No. of Breakdowns</h2>
 			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
 			class="lucide lucide-split-icon lucide-split stroke-gray-500"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L3 3"/><path d="m15 9 6-6"/></svg>
 			</div>
 			<h2 class="text-3xl font-bold">16</h2>
-			<span class="text-green-500">↑12%</span> <span class="text-gray-500">from last 2 hours 30 mins </span>
+			<span class="text-green-500">↑12%</span>
+			<span class="text-gray-500 text-xs md:text-sm">from last 2 hours 30 mins </span>
 		</div>
 
-		<div class="flex-1 min-w-[200px] border rounded-lg border-gray-300 p-4">
-			<h2 class=" text-sr font-semibold flex items-center gap-50">Active Runtime
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles-icon lucide-sparkles stroke-gray-500">
-					<path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 
-					0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z "/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>
-			</h2>
+		<!-- CARD 3 -->
+		<div class="border rounded-lg border-gray-300 p-4">
+			<div class="flex items-center justify-between">
+				<h2 class="text-sm md:text-base font-semibold">Active Runtime</h2>
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+					stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="stroke-gray-500">
+					<path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>
+			</div>
 			<h2 class="text-3xl font-bold">24%</h2>
-			<span class="text-red-500">↑34.8%</span> <span class="text-gray-500">from last 2 hours 30 mins </span>
+			<span class="text-red-500">↑34.8%</span>
+			<span class="text-gray-500 text-xs md:text-sm">from last 2h 30m</span>
 		</div>
 
-		<div class="flex-1 min-w-[200px] border rounded-lg border-gray-300 p-4 ">
-			<div class="flex items-center gap-50">
-			<h2 class=" text-sr font-semibold font-sans flex items-center  "> Jobs Completed</h2>
-			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" 
-			stroke-linejoin="round" class="lucide lucide-check-check-icon lucide-check-check stroke-gray-500"><path d="M18 6 7 17l-5-5"/><path d="m22 10-7.5 7.5L13 16"/></svg>
+		<!-- CARD4 -->
+		<div class="border rounded-lg border-gray-300 p-4">
+			<div class="flex items-center justify-between">
+				<h2 class="text-sm md:text-base font-semibold">Jobs Completed</h2>
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+					stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="stroke-gray-500">
+					<path d="M18 6 7 17l-5-5"/><path d="m22 10-7.5 7.5L13 16"/></svg>
 			</div>
 			<h2 class="text-3xl font-bold">1</h2>
-			<span class="text-red-500">↑9.8%</span> <span class="text-gray-500">from last 2 hours 30 mins </span>
+			<span class="text-red-500">↑9.8%</span>
+			<span class="text-gray-500 text-xs md:text-sm">from last 2h 30m</span>
 		</div>
 
 	</div>
 
-  <!-- <div class="stats-cards">
-	<div class="stat"><strong>Total Production</strong><h3>379 m<br>+ <br> 7.54 t</h3><span style="color: red">↑99.8%</span>  from last 2 hours 30 mins</div>
-	<div class="stat"><strong>No. of Breakdowns</strong><h2>16</h2><span style="color: red">↑12%</span>  from last 2 hours 30 mins</div>
-	<div class="stat"><strong>Active Runtime</strong><h2>24%</h2><span style="color: red">↑34.8%</span>  from last 2 hours 30 mins</div>
-	<div class="stat"><strong>Jobs Completed</strong><h2>1</h2><span style="color: red">↑9.8%</span>  from last 2 hours 30 mins</div>
-  </div> -->
-  
+
   
    <!-- MACHINE GRID -->
-	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 p-5 items-start">
+	<div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5  gap-5 p-5 w-500-start font-[Manrope]">
 
 	{#each machines as machine}
 	  <MachineCard {...machine} />
 	{/each}
   </div>
 
-    <div class="flex items-center gap-50       ">
+    <!-- <div class="flex items-center gap-10 "> -->
+
 
   <!-- BAR GRAPH -->
-  <div class="p-2">
-  	<div class="bg-white rounded-lg shadow p-4">
-    	<h2 class="text-lg font-semibold mb-4">Production Across Machines</h2>
+		<!-- <div class="p-2 ">
+			<div class="bg-white rounded-lg shadow p-4 ">
+				<h2 class="text-lg font-semibold mb-4">Production Across Machines</h2>
 
-		<div class="w-[500px] h-[300px] p-4 bg-white shadow rounded-xl">
-  			<canvas bind:this={chartCanvas}></canvas>
+				<div class="w-[1300px] h-[300px] p-4 bg-white shadow rounded-xl">
+					<canvas bind:this={chartCanvas}></canvas>
+			</div>
+
+		</div>
+		</div> -->
+
+		<!-- GRAPH + LIST SECTION -->
+<div class="flex flex-col lg:flex-row gap-6 px-4">
+	<!-- BAR GRAPH -->
+	<div class="flex-1 bg-white rounded-lg shadow p-4">
+		<h2 class="text-lg font-semibold mb-4">Production Across Machines</h2>
+		<div class="w-full h-[300px]">
+			<canvas bind:this={chartCanvas}></canvas>
+		</div>
 	</div>
 
-  </div>
+
+
+<!-- PRODUCTION LIST -->
+<div class="flex-1 bg-white rounded-lg shadow p-4 max-h-[350px] overflow-y-auto">
+	<h2 class="text-lg font-semibold mb-3">Production By Machines</h2>
+	<ul class="space-y-3">
+		{#each machines as machine}
+			<li class="flex justify-between items-start border-b pb-2">
+				<div>
+					<p class="font-medium text-gray-800">{machine.name}</p>
+					<p class="text-sm text-gray-500">
+						Status: {machine.status}, OEE: {machine.oee}
+					</p>
+				</div>
+				<p class="font-semibold text-gray-900 whitespace-nowrap ml-2">
+					{machine.production}
+				</p>
+			</li>
+		{/each}
+	</ul>
+</div>
 </div>
 
-	<div class="bg-white rounded-lg shadow p-4 h-[350px] w-[320px] overflow-y-auto">
+	<!-- <div class="bg-white rounded-lg shadow p-4 h-[350px] w-[660px] overflow-y-auto">
   		<h2 class="text-lg font-semibold mb-3">Production By Machines</h2>
 
   			<ul class="space-y-3">
     		{#each machines as machine}
-      			<li class="flex justify-between items-start border-b pb-2">
+      			<li class="flex justify-between items-start border-b pb-2"> -->
+
         <!-- Left Info -->
-        	<div>
+
+        	<!-- <div>
           	<p class="font-medium text-gray-800">{machine.name}</p>
           	<p class="text-sm text-gray-500">
             Breakdowns : {machine.breakdowns}, Jobs Completed : {machine.jobsCompleted}, Active Runtime : 
             <span class={machine.runtimeColor}>{machine.runtime}</span>
           	</p>
-        	</div>
+        	</div> -->
 
         <!-- Production -->
-        	<p class="font-semibold text-gray-900 whitespace-nowrap ml-2">
+
+        	<!-- <p class="font-semibold text-gray-900 whitespace-nowrap ml-2">
           	{machine.production}
         	</p>
       			</li>
     		{/each}
   			</ul>
-	</div>
-	</div>
+	</div> -->
+
+
+	<!-- </div> -->
   
   
   <a href="/login">Logout</a>
